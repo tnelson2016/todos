@@ -1,0 +1,25 @@
+{
+  "name": "todos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tnelson2016/todos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tnelson2016/todos/issues"
+  },
+  "homepage": "https://github.com/tnelson2016/todos#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "ramda": "^0.25.0"
+  },
+  "devDependencies": {}
+}
