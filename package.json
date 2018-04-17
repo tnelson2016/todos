@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/tnelson2016/todos#readme",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "ramda": "^0.25.0"
   },
