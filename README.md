@@ -16,7 +16,7 @@ GET /
 Welcome to the ToDos API
 ```
 
-##Create a todo
+## Create a todo
 
 ```
 POST /todos
@@ -24,13 +24,14 @@ POST /todos
 
 Example
 
-Create a todo by sendthe the todo as as json string in the request body. The "text" is required. 'Completed' property is option. If not provide 'complete' will default to 'false'.
+Create a todo by sending the todo as a json string in the request body. The `text` is required. `completed` property is option. If omitted `complete` will default to `false`.
 
 ```
 POST /todos
+
 {
-text: "Eat tacos".
-completed: false  
+  text: "Eat tacos",
+  completed: false
 }
 ```
 
@@ -38,30 +39,35 @@ completed: false
 
 ```
 {
-id: 4,  
-text: "Eat tacos".
-completed: false  
+  id: 4,
+  text: "Eat tacos",
+  completed: false
 }
 ```
 
-## Retrieve a todo (Read)
+## Retrieve a todo
 
 ```
+GET /todos/:id
+```
+
 Example
-```
-
-GET/todos/4
 
 ```
+GET /todos/4
+```
+
 200 Response
+
+```
+{
+  id: 4,
+  text: "Eat tacos",
+  completed: false
+}
 ```
 
-{
-id: 4,  
-text: "Eat tacos".
-completed: false  
-}
-##Update a todo
+## Update a todo
 
 ```
 PUT /todos/:id
@@ -69,16 +75,17 @@ PUT /todos/:id
 
 Example
 
-Update a todo by sending the todo as as json string in the request body. The "text" is required. 'Completed' property is option. If not provide 'complete' will default to 'false'.
+Update a todo by sending the todo as a json string in the request body. The `text` is required. `completed` property is required.
 
-We ate at taco bell for lunch and ate tacos so let's check this item off of out todos list.
+We ate a taco bell for lunch and ate tacos so let's check this todo item off our list.
 
 ```
 PUT /todos/4
+
 {
-id: 4,  
-text: "Eat tacos".
-completed: true
+  id: 4,
+  text: "Eat tacos",
+  completed: true
 }
 ```
 
@@ -86,108 +93,82 @@ completed: true
 
 ```
 {
-id: 4,  
-text: "Eat tacos".
-completed: true
+  id: 4,
+  text: "Eat tacos",
+  completed: true
 }
 ```
 
-## Retrieve a todo (Read)
+## Delete a todo
 
 ```
-Example
-```
-
-GET/todos/1
-
-```
-200 Response
-```
-
-{
-"id": 1,
-"text": "Wake up",
-"completed": false
-}
-
-##Delete a todo
-
-```
-DELETE/todos/:id
+DELETE /todos/:id
 ```
 
 Example
 
 ```
-DELETE/todos/4
+DELETE /todos/4
 ```
 
 200 OK
 
 ```
-{ok:true}
+{ok: true}
 ```
 
-```
-## GET todos (List)
-```
-
-GET/todos
+## GET todos (LIST)
 
 ```
+GET /todos
+```
+
 200 Response
 
+```
 [
-{
-"id": 1,
-"text": "Wake up",
-"completed": false
-},
-{
-"id": 2,
-"text": "Drink Coffee",
-"completed": false
-},
-{
-"id": 3,
-"text": "Learn express",
-"completed": false
-}
+  {
+    id: 1,
+    text: "Wake up",
+    completed: true
+  },
+  {
+    id: 2,
+    text: "Drink coffee",
+    completed: true
+  },
+  {
+    id: 3,
+    text: "Teach express",
+    completed: false
+  }
 ]
 ```
 
 ## Search todos
 
-Search todos using a search query string 's' providing the todo property and value of the item we wish to search. Matching results include any values that equal or contain given search criteria.
+Search todos using a search query string `s` providing the todo property and value of the item we wish to search. Matching results include any values that equal or contain the given search criteria.
 
 ```
-GET/todos?s=<property>:<value>
+GET /todos?s=<property>:<value>
 ```
 
 Example
-Searching for the word "teach" within a todso 'text' property.
+
+Searching for the word "teach" within a todos `text` property.
 
 ```
-GET/todos?s=text:teach
+GET /todos?s=text:teach
 ```
 
 200 OK
 
 ```
 [
-{
-"id": 3,
-"text": "Learn express",
-"completed": false
-}
+  {
+    id: 3,
+    text: "Teach express",
+    completed: false
+  }
 ]
-```
-
-Create
-Read
-Update
-Delete
-
-```
-
 ```
