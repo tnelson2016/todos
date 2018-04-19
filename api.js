@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const search = require('./lib/to-do-search')
-const requirFieldChecker = require('./lib/check-req-fields')
+const reqFieldChecker = require('./lib/check-req-fields')
 const objClean = require('./lib/clean-object')
 const HTTPError = require('node-http-error')
 
@@ -22,7 +22,8 @@ const {
   merge,
   not,
   isEmpty,
-  join
+  join,
+  find
 } = require('ramda')
 
 const bodyParser = require('body-parser')
@@ -61,6 +62,16 @@ app.post('/todos', (req, res, next) => {
 
   todos.push(merge(req.body, { id: newId }))
   res.status(201).send(newToDo)
+  return
+})
+
+app.get('/todos/:id', (req, res, next) => {
+  const foundToDo = find(todo => todo.id == req.params.id, todos)
+  if (foundToDo) {
+    res.send(foundToDo)
+  } else {
+    next(HTTPError(404, 'Todo Not Found'))
+  }
   return
 })
 
